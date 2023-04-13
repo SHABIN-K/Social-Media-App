@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 
-import shareVideo from "../assets/share.mp4";
-import logo from "../assets/logowhite.png";
+import { shareVideo, logo } from "../assets";
 import { client, urlFor } from "../lib/client";
 
 const Login = () => {
