@@ -5,3 +5,4 @@ import postedBy from './postedBy'
 import save from './save'
 
 export const schemaTypes = [user, pin, comment, postedBy, save]
+

@@ -6,8 +6,11 @@ import axios from "axios";
 
 import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
+import { client, urlFor } from "../client";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState([]);
 
   const responseGoogle = useGoogleLogin({
@@ -34,9 +37,13 @@ const Login = () => {
             _id: id,
             _type: "user",
             userName: name,
-            image: picture,
+            image: urlFor(picture),
           };
-          console.log("succesfully stored");
+
+          client.createIfNotExists(doc).then(() => {
+            navigate("/", { replace: true });
+            //console.log("succesfully send data");
+          });
         })
         .catch((err) => console.log(err));
     }
