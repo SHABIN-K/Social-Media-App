@@ -16,7 +16,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    if (user) {
+    if (user.access_token) {
       axios
         .get(
           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
@@ -32,10 +32,11 @@ const Login = () => {
           const { id, picture, name } = res.data;
           const doc = {
             _id: id,
-            _type: 'user',
+            _type: "user",
             userName: name,
             image: picture,
-          }
+          };
+          console.log("succesfully stored");
         })
         .catch((err) => console.log(err));
     }
