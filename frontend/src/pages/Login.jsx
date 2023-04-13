@@ -6,7 +6,7 @@ import axios from "axios";
 
 import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
-import { client, urlFor } from "../client";
+import { client, urlFor } from "../lib/client";
 
 const Login = () => {
   const navigate = useNavigate();

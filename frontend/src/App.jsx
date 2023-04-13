@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 
 function App() {
   return (
