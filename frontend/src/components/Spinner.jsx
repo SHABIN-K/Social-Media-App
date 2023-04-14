@@ -1,7 +1,7 @@
 import React from "react";
 import { ColorRing } from "react-loader-spinner";
 
-const Spinner = () => {
+const Spinner = ({ message }) => {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <ColorRing
@@ -14,7 +14,7 @@ const Spinner = () => {
         wrapperClass="blocks-wrapper"
         className="m-5"
       />
-      <p className="text-lg text-center px-2">We are adding new ideas to your feed!</p>
+      <p className="text-lg text-center px-2">{message}</p>
     </div>
   );
 };
