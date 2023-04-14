@@ -6,7 +6,8 @@ import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 
 const Feed = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const {categoryId} = useParams();
 
   if(loading) return <Spinner/>
 
@@ -15,4 +16,4 @@ const Feed = () => {
   )
 }
 
-export default Feed
+export default Feed;
