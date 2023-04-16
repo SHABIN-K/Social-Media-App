@@ -5,20 +5,13 @@ import { RiHomeFill } from "react-icons/ri";
 import { IoIosArrowForward } from "react-icons/io";
 
 import { logoRed } from "../assets";
+import { categories } from "../lib/categories";
 
 const isNotActiveStyle =
   "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize";
 const isActiveStyle =
   "flex items-center px-5 gap-3 font-extrabold border-r-2 border-black  transition-all duration-200 ease-in-out capitalize";
 
-const cateogries = [
-  { name: "Animals" },
-  { name: "wallpapper" },
-  { name: "Photography" },
-  { name: "Gaming" },
-  { name: "codeing" },
-  { name: "others" },
-];
 
 const Sidebar = ({ user, closeToggle, userImg }) => {
   const handleCloseSidebar = () => {
@@ -49,7 +42,7 @@ const Sidebar = ({ user, closeToggle, userImg }) => {
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">
             Discover cateogries
           </h3>
-          {cateogries.slice(0, cateogries.length - 1).map((category, index) => (
+          {categories.slice(0, 5).map((category, index) => (
             <NavLink
               to={`/category/${category.name}`}
               className={({ isActive }) =>
