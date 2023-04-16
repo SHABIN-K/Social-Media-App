@@ -8,6 +8,7 @@ import { logoRed } from "../assets";
 import { client } from "../lib/client";
 import { userQuery } from "../lib/data";
 import Pins from "./Pins";
+import { fetchUser } from "../lib/fetchUser";
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -15,10 +16,7 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);
 
-  const userInfo =
-    localStorage.getItem("user") != "undefined"
-      ? JSON.parse(localStorage.getItem("user"))
-      : localStorage.clear();
+  const userInfo =fetchUser()
 
   useEffect(() => {
     const query = userQuery(userInfo?.id);

@@ -7,14 +7,20 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 
 import { client, urlFor } from "../lib/client";
+import { fetchUser } from "../lib/fetchUser";
 
 const Pin = ({ pin }) => {
   const navigate = useNavigate();
   const [postHovered, setPostHovered] = useState(false);
   const [savingPost, setSavingPost] = useState(false);
 
-  const { postedBy, image, _id, destination } = pin;
-  console.log(image);
+  const { postedBy, image, _id, destination, save } = pin;
+  console.log(pin);
+
+  const user = fetchUser()
+
+  let alreadySaved = save?.filter((item) => item.postedBy._id === user.id)
+  
   return (
     <div className="m-2">
       <div
@@ -35,13 +41,22 @@ const Pin = ({ pin }) => {
           >
             <div className="flex items-center justify-between">
               <div className="flex gap-2">
-                <a href={`${image?.asset?.url}?dl=`} download onClick={(e) => e.stopPropagation()}
-                className="bg-white w-9 h-9 rounded-full flex
+                <a
+                  href={`${image?.asset?.url}?dl=`}
+                  download
+                  onClick={(e) => e.stopPropagation()}
+                  className="bg-white w-9 h-9 rounded-full flex
                  items-center justify-center text-dark text-xl opacity-75 hover:opac10
-                  hover:shadow-md outline-none">
-                  <MdDownloadForOffline/>
+                  hover:shadow-md outline-none"
+                >
+                  <MdDownloadForOffline />
                 </a>
               </div>
+              {alreadySaved?.length !== 0 ? (
+                <button>Saved</button>
+              ) : (
+                <button>Save</button>
+              )}
             </div>
           </div>
         )}
