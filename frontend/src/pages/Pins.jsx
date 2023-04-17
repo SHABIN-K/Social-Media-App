@@ -18,7 +18,7 @@ const Pins = ({ user, userImg }) => {
       </div>
       <div className="bg-black h-[1px] mb-3 w-full" />
       <div className="bg-gray-50 sm:hidden">
-        <div className="flex overflow-x-auto">
+        <div className="flex overflow-x-auto hide-scrollbar">
           {categories.slice(0, categories.length - 1).map((category, index) => (
             <NavLink to={`/category/${category.name}`} key={index}>
               <div className="pl-3">

@@ -15,11 +15,12 @@ const Pin = ({ pin }) => {
   const [savingPost, setSavingPost] = useState(false);
 
   const { postedBy, image, _id, destination, save } = pin;
-  
+
   const user = fetchUser();
 
   let alreadySaved = save?.filter((item) => item.postedBy._id === user.id);
-
+  alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
+  
   const savePin = (id) => {
     if (alreadySaved?.length === 0) {
       setSavingPost(true);
@@ -132,6 +133,17 @@ const Pin = ({ pin }) => {
           </div>
         )}
       </div>
+      <Link
+        to={`/user-profile/${postedBy?._id}`}
+        className="flex gap-2 mt-2 item-center"
+      >
+        <img
+          src={postedBy?.image?.options?.source}
+          alt="user-profile"
+          className="w-8 h-8 rounded-full object-cover"
+        />
+        <p className="font-semibold capitalize">{postedBy?.userName}</p>
+      </Link>
     </div>
   );
 };
