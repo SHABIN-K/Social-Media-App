@@ -43,7 +43,7 @@ const Pins = ({ user, userImg }) => {
           />
           <Route
             path="/create-pin"
-            element={<CreatePin user={user && user} />}
+            element={<CreatePin user={user && user} userImg={userImg} />}
           />
           <Route
             path="/search"
