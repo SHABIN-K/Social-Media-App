@@ -77,7 +77,7 @@ export const pinDetailQuery = (pinId) => {
               image
             },
           },
-          comments[]{
+          comment[]{
             comment,
             _key,
             postedBy->{
