@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 
-import { AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineLogout } from "react-icons/ai";
 
-
-import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../lib/data';
-import { client } from '../lib/client';
+import {
+  userCreatedPinsQuery,
+  userQuery,
+  userSavedPinsQuery,
+} from "../lib/data";
+import { client } from "../lib/client";
 import { fetchUser } from "../lib/fetchUser";
-import MasonryLayout from './MasonryLayout';
-import Spinner from './Spinner';
+import MasonryLayout from "./MasonryLayout";
+import Spinner from "./Spinner";
 
-const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
-const notActiveBtnStyles = 'bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none';
+const activeBtnStyles =
+  "bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none";
+const notActiveBtnStyles =
+  "bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none";
 
 const UserProfile = () => {
   const [user, setUser] = useState();
   const [pins, setPins] = useState();
-  const [text, setText] = useState('Created');
-  const [activeBtn, setActiveBtn] = useState('created');
+  const [text, setText] = useState("Created");
+  const [activeBtn, setActiveBtn] = useState("created");
   const navigate = useNavigate();
   const { userId } = useParams();
 
-  const User = fetchUser()
-  console.log(`user`,User);
-
+  const User = fetchUser();
+  
   useEffect(() => {
     const query = userQuery(userId);
     client.fetch(query).then((data) => {
@@ -33,7 +37,7 @@ const UserProfile = () => {
   }, [userId]);
 
   useEffect(() => {
-    if (text === 'Created') {
+    if (text === "Created") {
       const createdPinsQuery = userCreatedPinsQuery(userId);
 
       client.fetch(createdPinsQuery).then((data) => {
@@ -48,10 +52,23 @@ const UserProfile = () => {
     }
   }, [text, userId]);
 
-  const logout = () => {
+
+  const GoogleLoginOutButton = ({ onClick }) => {
+    return (
+      <button
+        onClick={onClick}
+        type="button"
+        className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none font-bold"
+      >
+        <AiOutlineLogout color="red" fontSize={21} />Log out
+      </button>
+    );
+  };
+
+  const logOut = () => {
     localStorage.clear();
 
-    navigate('/login');
+    navigate("/login");
   };
 
   if (!user) return <Spinner message="Loading profile" />;
@@ -68,8 +85,7 @@ const UserProfile = () => {
             />
             <img
               className="rounded-full w-20 h-20 -mt-10 shadow-xl object-cover"
-              src={user.picture
-              }
+              src={user?.image?.options?.source}
               alt="user-pic"
             />
           </div>
@@ -78,13 +94,7 @@ const UserProfile = () => {
           </h1>
           <div className="absolute top-0 z-1 right-0 p-2">
             {userId === User.id && (
-
-                  <button
-                    type="button"
-                    className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
-                  >
-                    <AiOutlineLogout color="red" fontSize={821} />
-                  </button>
+              <GoogleLoginOutButton onClick={() => logOut()} />
             )}
           </div>
         </div>
@@ -93,9 +103,11 @@ const UserProfile = () => {
             type="button"
             onClick={(e) => {
               setText(e.target.textContent);
-              setActiveBtn('created');
+              setActiveBtn("created");
             }}
-            className={`${activeBtn === 'created' ? activeBtnStyles : notActiveBtnStyles}`}
+            className={`${
+              activeBtn === "created" ? activeBtnStyles : notActiveBtnStyles
+            }`}
           >
             Created
           </button>
@@ -103,9 +115,11 @@ const UserProfile = () => {
             type="button"
             onClick={(e) => {
               setText(e.target.textContent);
-              setActiveBtn('saved');
+              setActiveBtn("saved");
             }}
-            className={`${activeBtn === 'saved' ? activeBtnStyles : notActiveBtnStyles}`}
+            className={`${
+              activeBtn === "saved" ? activeBtnStyles : notActiveBtnStyles
+            }`}
           >
             Saved
           </button>
@@ -116,12 +130,11 @@ const UserProfile = () => {
         </div>
 
         {pins?.length === 0 && (
-        <div className="flex justify-center font-bold items-center w-full text-1xl mt-2">
-          No Pins Found!
-        </div>
+          <div className="flex justify-center font-bold items-center w-full text-1xl mt-2">
+            No Pins Found!
+          </div>
         )}
       </div>
-
     </div>
   );
 };
