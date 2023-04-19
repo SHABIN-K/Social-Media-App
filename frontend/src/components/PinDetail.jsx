@@ -18,8 +18,6 @@ const PinDetail = ({ user, userImg }) => {
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
 
-  //if (!pinDetail) return <Spinner message="Showing pin" />;
-
   const fetchPinDetails = () => {
     const query = pinDetailQuery(pinId);
 
@@ -63,6 +61,7 @@ const PinDetail = ({ user, userImg }) => {
     }
   };
 
+  if (!pinDetail) return <Spinner message="Showing pin" />;
   return (
     <>
       {pinDetail && (
