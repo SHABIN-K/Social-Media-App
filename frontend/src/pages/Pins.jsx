@@ -26,7 +26,7 @@ const Pins = ({ user, userImg }) => {
                   src={category.image}
                   className="w-10 h-10 rounded-full shadow-sm"
                 />
-                {category.name.slice(0,7)}
+                {category.name.slice(0, 7)}
               </div>
             </NavLink>
           ))}
@@ -39,7 +39,7 @@ const Pins = ({ user, userImg }) => {
           <Route path="/category/:categoryId" element={<Feed />} />
           <Route
             path="/pin-detail/:pinId"
-            element={<PinDetail user={user && user} userImg={userImg}/>}
+            element={<PinDetail user={user && user} userImg={userImg} />}
           />
           <Route
             path="/create-pin"

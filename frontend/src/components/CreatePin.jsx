@@ -52,7 +52,8 @@ const CreatePin = ({ user, userImg }) => {
   };
 
   const savePin = () => {
-   const dataExits = title && about && destination && imageAsset?._id && category;
+    const dataExits =
+      title && about && destination && imageAsset?._id && category;
 
     if (dataExits) {
       const doc = {
@@ -82,7 +83,7 @@ const CreatePin = ({ user, userImg }) => {
       setTimeout(() => setFields(false), 2000);
     }
   };
-  
+
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
       {fields && (

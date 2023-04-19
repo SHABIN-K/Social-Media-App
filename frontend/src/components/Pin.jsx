@@ -20,7 +20,7 @@ const Pin = ({ pin }) => {
 
   let alreadySaved = save?.filter((item) => item.postedBy._id === user.id);
   alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
-  
+
   const savePin = (id) => {
     if (alreadySaved?.length === 0) {
       setSavingPost(true);
