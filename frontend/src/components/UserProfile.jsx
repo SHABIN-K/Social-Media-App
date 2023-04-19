@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useGoogleLogin } from "@react-oauth/google";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { AiOutlineLogout } from "react-icons/ai";
@@ -20,15 +19,16 @@ const notActiveBtnStyles =
   "bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none";
 
 const UserProfile = () => {
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
   const [user, setUser] = useState();
   const [pins, setPins] = useState();
   const [text, setText] = useState("Created");
   const [activeBtn, setActiveBtn] = useState("created");
-  const navigate = useNavigate();
-  const { userId } = useParams();
 
   const User = fetchUser();
-  
+
   useEffect(() => {
     const query = userQuery(userId);
     client.fetch(query).then((data) => {
@@ -52,7 +52,6 @@ const UserProfile = () => {
     }
   }, [text, userId]);
 
-
   const GoogleLoginOutButton = ({ onClick }) => {
     return (
       <button
@@ -60,7 +59,8 @@ const UserProfile = () => {
         type="button"
         className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none font-bold"
       >
-        <AiOutlineLogout color="red" fontSize={21} />Log out
+        <AiOutlineLogout color="red" fontSize={21} />
+        Log out
       </button>
     );
   };
