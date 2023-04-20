@@ -9,6 +9,8 @@ With all advanced Social Media features, such as Google Authentication, create, 
 **Server:** sanity
 <hr/>
 <img src="https://user-images.githubusercontent.com/73272797/233392854-eaccd32d-2db2-4fa6-bae5-96266609d150.png">
+
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
