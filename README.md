@@ -4,7 +4,7 @@ With all advanced Social Media features, such as Google Authentication, create, 
 
 ## Tech Stack
   
-**Client:** React, Vite
+**Client:** React, Vite,TailwindCss
 
 **Server:** sanity
 <hr/>
