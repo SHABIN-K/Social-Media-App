@@ -6,15 +6,19 @@ With all advanced Social Media features, such as Google Authentication, create, 
   
 **Client:** React, Vite
 
-**Server:** Node, Express, socket.io
+**Server:** sanity
+<hr/>
 <img src="https://user-images.githubusercontent.com/73272797/233392854-eaccd32d-2db2-4fa6-bae5-96266609d150.png">
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
 **Client:**
-* `VITE_ENDPOINT_URL` your backend url 
 
+* `VITE_APP_GOOGLE_CLIENT_ID_TOKEN` your google client id
+* `VITE_APP_SANITY_PROJECT_ID` sanity project id
+* `VITE_APP_SANITY_TOKEN` sanity token 
+ 
 ## Run Locally
 
 Clone the project
