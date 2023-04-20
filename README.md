@@ -20,20 +20,20 @@ To run this project, you will need to add the following environment variables to
 Clone the project
 
 ```bash
-  git clone https://github.com/SHABIN-K/Realtime-Chat-Application.git
+  git clone https://github.com/SHABIN-K/Social-Media-App.git
 ```
 **Client:**
 ````bash
-cd client
+cd frontend
 npm install
 # <Create .env appropriately>
 npm run dev
 ````
 **Server:**
 ````bash
-cd server
+cd backend
 npm install
-npm start
+npm run dev
 ````
 
 ## Support   
